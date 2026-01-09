@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Index View - Tile Grid -->
+    <div id="index-view" class="view active">
+        <div class="tile-grid" id="tile-grid"></div>
+    </div>
+
+    <!-- Player View -->
+    <div id="player-view" class="view">
+        <video id="video-player" playsinline></video>
+
+        <!-- Tile thumbnail in lower right -->
+        <div class="player-tile" id="player-tile"></div>
+
+        <!-- Controls overlay (shown when paused) -->
+        <div class="controls-overlay" id="controls-overlay">
+            <!-- Close button -->
+            <button class="close-button" id="close-button">
+                <img src="assets/ui-elements/button_close.svg" alt="Close">
+            </button>
+
+            <!-- Play button -->
+            <button class="play-button" id="play-button">
+                <img src="assets/ui-elements/button_play.svg" alt="Play">
+            </button>
+
+            <!-- Scrubbing bar -->
+            <div class="scrub-bar" id="scrub-bar">
+                <div class="scrub-progress" id="scrub-progress"></div>
+                <div class="scrub-handle" id="scrub-handle">
+                    <img src="assets/ui-elements/scrubber.svg" alt="Scrubber">
+                </div>
+            </div>
+
+            <!-- Time display -->
+            <div class="time-display" id="time-display">00:00:00</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

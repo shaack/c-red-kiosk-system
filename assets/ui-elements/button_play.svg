@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="360px" viewBox="0 0 360 360" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pause" transform="translate(-1740, -900)">
+            <g id="Group" transform="translate(1740, 900)">
+                <g id="Ellipse_4">
+                    <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="180" cy="180" r="180"></circle>
+                    <circle id="Oval" stroke="#707070" cx="180" cy="180" r="179.5"></circle>
+                </g>
+                <g id="Gruppe_37" transform="translate(132.3783, 87.402)" stroke="#FF5F1E" stroke-width="7">
+                    <line x1="-19.1306867" y1="48.2153133" x2="114.372313" y2="47.0263133" id="Linie_3" transform="translate(47.6208, 47.6208) rotate(45) translate(-47.6208, -47.6208)"></line>
+                    <line x1="-19.1299368" y1="136.981437" x2="114.373063" y2="138.170437" id="Linie_4" transform="translate(47.6216, 137.5759) rotate(-45) translate(-47.6216, -137.5759)"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

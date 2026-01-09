@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: Arial, sans-serif;
+    cursor: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Index View - Tile Grid */
+#index-view {
+    background: #000;
+}
+
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    gap: 0;
+}
+
+.tile {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tile:hover {
+    opacity: 0.9;
+}
+
+/* Player View */
+#player-view {
+    background: #000;
+}
+
+#video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Player Tile Thumbnail */
+.player-tile {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% / 7);
+    height: calc(100% / 3);
+    z-index: 10;
+}
+
+.player-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Controls Overlay */
+.controls-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 180, 150, 0.4);
+    display: none;
+    z-index: 20;
+}
+
+.controls-overlay.visible {
+    display: block;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 30;
+}
+
+.close-button img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Play Button */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 30;
+}
+
+.play-button img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Scrub Bar */
+.scrub-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: calc(100% / 7 + 40px);
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    z-index: 30;
+}
+
+.scrub-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+}
+
+.scrub-handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 100px;
+    cursor: pointer;
+    z-index: 31;
+}
+
+.scrub-handle img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Time Display */
+.time-display {
+    position: absolute;
+    bottom: 55px;
+    left: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-family: monospace;
+    z-index: 30;
+}
