@@ -8,7 +8,7 @@
     const GRID_COLUMNS = 7;
     const GRID_ROWS = 3;
     const PAUSE_TIMEOUT_MS = 3 * 60 * 1000; // 3 minutes
-    const CURSOR_HIDE_MS = 3 * 1000; // 3 seconds
+    const CURSOR_HIDE_MS = 1 * 1000; // 1 second
 
     // DOM Elements
     const indexView = document.getElementById('index-view');
