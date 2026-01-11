@@ -8,7 +8,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
+    background: #fff;
     font-family: Arial, sans-serif;
     cursor: none;
     user-select: none;
@@ -30,7 +30,7 @@ html, body {
 
 /* Index View - Tile Grid */
 #index-view {
-    background: #000;
+    background: #fff;
 }
 
 .tile-grid {
@@ -39,7 +39,9 @@ html, body {
     grid-template-rows: repeat(3, 1fr);
     width: 100%;
     height: 100%;
-    gap: 0;
+    gap: 0.53vw;
+    padding: 1.05vw;
+    box-sizing: border-box;
 }
 
 .tile {
@@ -53,7 +55,7 @@ html, body {
 .tile img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
