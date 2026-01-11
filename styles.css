@@ -195,10 +195,11 @@ body.cursor-hidden * {
 /* Time Display */
 .time-display {
     position: absolute;
-    bottom: 2.9vw;
-    left: 2.1vw;
+    top: 50%;
+    transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.84vw;
     font-family: 'EB Garamond', serif;
-    z-index: 30;
+    z-index: 32;
+    white-space: nowrap;
 }

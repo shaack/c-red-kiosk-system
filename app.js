@@ -195,10 +195,30 @@
 
         const progress = videoPlayer.currentTime / videoPlayer.duration;
         const barWidth = scrubBar.offsetWidth;
-        scrubHandle.style.left = (progress * barWidth) + 'px';
+        const handleX = progress * barWidth;
+        scrubHandle.style.left = handleX + 'px';
 
         // Update time display
         timeDisplay.textContent = formatTime(videoPlayer.currentTime);
+        updateTimeDisplayPosition(handleX, barWidth);
+    }
+
+    // Position time display beside scrub handle
+    function updateTimeDisplayPosition(handleX, barWidth) {
+        const timeWidth = timeDisplay.offsetWidth;
+        const handleWidth = scrubHandle.offsetWidth;
+        const spacing = 10; // pixels between handle and time
+
+        // Check if more space on left or right
+        if (handleX > barWidth / 2) {
+            // More space on left, put time on left of handle
+            timeDisplay.style.left = (handleX - timeWidth - spacing) + 'px';
+            timeDisplay.style.right = 'auto';
+        } else {
+            // More space on right, put time on right of handle
+            timeDisplay.style.left = (handleX + handleWidth + spacing) + 'px';
+            timeDisplay.style.right = 'auto';
+        }
     }
 
     // Format time as HH:MM:SS
@@ -235,6 +255,7 @@
         if (videoPlayer.duration) {
             videoPlayer.currentTime = progress * videoPlayer.duration;
             timeDisplay.textContent = formatTime(videoPlayer.currentTime);
+            updateTimeDisplayPosition(x, rect.width);
         }
 
         // Reset pause timeout during scrubbing
