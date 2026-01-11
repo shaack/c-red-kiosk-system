@@ -116,10 +116,10 @@ body.cursor-hidden * {
 /* Close Button */
 .close-button {
     position: absolute;
-    top: 1.06vw;
-    right: 1.06vw;
-    width: 3.16vw;
-    height: 3.16vw;
+    top: 3.06vw;
+    right: 6.06vw;
+    width: 3.83vw;
+    height: 3.83vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -138,8 +138,8 @@ body.cursor-hidden * {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 6.32vw;
-    height: 6.32vw;
+    width: 8.03vw;
+    height: 8.03vw;
     background: transparent;
     border: none;
     cursor: pointer;

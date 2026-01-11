@@ -3,11 +3,12 @@
 
     // Configuration
     const TEST_MODE = true; // Set to false for production (loads 01.mp4-16.mp4)
+    const START_PAUSED = true; // Set to true to start directly in player view paused
     const TILES_COUNT = 16;
     const GRID_COLUMNS = 7;
     const GRID_ROWS = 3;
     const PAUSE_TIMEOUT_MS = 3 * 60 * 1000; // 3 minutes
-    const CURSOR_HIDE_MS = 3 * 1000; // 5 seconds
+    const CURSOR_HIDE_MS = 3 * 1000; // 3 seconds
 
     // DOM Elements
     const indexView = document.getElementById('index-view');
@@ -32,6 +33,29 @@
     function init() {
         createTileGrid();
         setupEventListeners();
+
+        if (START_PAUSED) {
+            startPaused();
+        }
+    }
+
+    // Start directly in player view paused (for testing)
+    function startPaused() {
+        currentTileIndex = 1;
+        const tileNumber = '01';
+
+        // Set video source
+        videoPlayer.src = TEST_MODE ? 'assets/videos/test.mp4' : `assets/videos/${tileNumber}.mp4`;
+
+        // Set white tile thumbnail
+        playerTile.innerHTML = `<img src="assets/tiles-x2/${tileNumber} weiss.png" alt="Tile ${tileNumber}">`;
+
+        // Switch to player view
+        indexView.classList.remove('active');
+        playerView.classList.add('active');
+
+        // Show controls (paused state)
+        controlsOverlay.classList.add('visible');
     }
 
     // Create the tile grid
