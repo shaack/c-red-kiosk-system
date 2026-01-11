@@ -3,7 +3,7 @@
 
     // Configuration
     const TEST_MODE = true; // Set to false for production (loads 01.mp4-16.mp4)
-    const START_PAUSED = true; // Set to true to start directly in player view paused
+    const START_PAUSED = false; // Set to true to start directly in player view paused
     const TILES_COUNT = 16;
     const GRID_COLUMNS = 7;
     const GRID_ROWS = 3;
@@ -228,11 +228,11 @@
         // Check if more space on left or right
         if (handleX > barWidth / 2) {
             // More space on left, put time on left of handle
-            timeDisplay.style.left = (handleX - timeWidth - spacing - 5) + 'px';
+            timeDisplay.style.left = (handleX - timeWidth - spacing - 7) + 'px';
             timeDisplay.style.right = 'auto';
         } else {
             // More space on right, put time on right of handle
-            timeDisplay.style.left = (handleX + handleWidth + spacing - 5) + 'px';
+            timeDisplay.style.left = (handleX + handleWidth + spacing - 7) + 'px';
             timeDisplay.style.right = 'auto';
         }
     }
