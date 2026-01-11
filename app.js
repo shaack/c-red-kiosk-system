@@ -223,16 +223,16 @@
     function updateTimeDisplayPosition(handleX, barWidth) {
         const timeWidth = timeDisplay.offsetWidth;
         const handleWidth = scrubHandle.offsetWidth;
-        const spacing = 10; // pixels between handle and time
+        const spacing = 25; // pixels between handle and time
 
         // Check if more space on left or right
         if (handleX > barWidth / 2) {
             // More space on left, put time on left of handle
-            timeDisplay.style.left = (handleX - timeWidth - spacing) + 'px';
+            timeDisplay.style.left = (handleX - timeWidth - spacing - 5) + 'px';
             timeDisplay.style.right = 'auto';
         } else {
             // More space on right, put time on right of handle
-            timeDisplay.style.left = (handleX + handleWidth + spacing) + 'px';
+            timeDisplay.style.left = (handleX + handleWidth + spacing - 5) + 'px';
             timeDisplay.style.right = 'auto';
         }
     }
