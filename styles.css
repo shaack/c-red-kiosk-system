@@ -9,10 +9,14 @@ html, body {
     height: 100%;
     overflow: hidden;
     background: #fff;
-    font-family: Arial, sans-serif;
-    cursor: none;
+    font-family: 'EB Garamond', serif;
     user-select: none;
     -webkit-user-select: none;
+}
+
+body.cursor-hidden,
+body.cursor-hidden * {
+    cursor: none !important;
 }
 
 .view {
@@ -65,7 +69,8 @@ html, body {
 
 /* Player View */
 #player-view {
-    background: #000;
+    background: #fff;
+    padding: 1.05vw;
 }
 
 #video-player {
@@ -111,10 +116,10 @@ html, body {
 /* Close Button */
 .close-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
+    top: 1.06vw;
+    right: 1.06vw;
+    width: 3.16vw;
+    height: 3.16vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -133,8 +138,8 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
+    width: 6.32vw;
+    height: 6.32vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -150,10 +155,10 @@ html, body {
 /* Scrub Bar */
 .scrub-bar {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
-    right: calc(100% / 7 + 40px);
-    height: 4px;
+    bottom: 2.1vw;
+    left: 2.1vw;
+    right: calc(100% / 7 + 2.1vw);
+    height: 0.22vw;
     background: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     z-index: 30;
@@ -172,8 +177,8 @@ html, body {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
-    height: 100px;
+    width: 1.06vw;
+    height: 5.26vw;
     cursor: pointer;
     z-index: 31;
 }
@@ -186,10 +191,10 @@ html, body {
 /* Time Display */
 .time-display {
     position: absolute;
-    bottom: 55px;
-    left: 40px;
+    bottom: 2.9vw;
+    left: 2.1vw;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    font-family: monospace;
+    font-size: 0.84vw;
+    font-family: 'EB Garamond', serif;
     z-index: 30;
 }

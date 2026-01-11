@@ -2,10 +2,12 @@
     'use strict';
 
     // Configuration
+    const TEST_MODE = true; // Set to false for production (loads 01.mp4-16.mp4)
     const TILES_COUNT = 16;
     const GRID_COLUMNS = 7;
     const GRID_ROWS = 3;
     const PAUSE_TIMEOUT_MS = 3 * 60 * 1000; // 3 minutes
+    const CURSOR_HIDE_MS = 3 * 1000; // 5 seconds
 
     // DOM Elements
     const indexView = document.getElementById('index-view');
@@ -24,6 +26,7 @@
     let currentTileIndex = null;
     let pauseTimeoutId = null;
     let isDragging = false;
+    let cursorTimeoutId = null;
 
     // Initialize the application
     function init() {
@@ -33,10 +36,8 @@
 
     // Create the tile grid
     function createTileGrid() {
-        const totalTiles = GRID_COLUMNS * GRID_ROWS;
-
-        for (let i = 0; i < totalTiles; i++) {
-            const tileIndex = (i % TILES_COUNT) + 1;
+        for (let i = 0; i < TILES_COUNT; i++) {
+            const tileIndex = i + 1;
             const tileNumber = String(tileIndex).padStart(2, '0');
 
             const tile = document.createElement('div');
@@ -74,6 +75,10 @@
         document.addEventListener('touchmove', handleScrub, { passive: false });
         document.addEventListener('mouseup', endScrub);
         document.addEventListener('touchend', endScrub);
+
+        // Cursor visibility
+        document.addEventListener('mousemove', handleCursorVisibility);
+        hideCursor(); // Hide cursor initially
     }
 
     // Play video for a tile
@@ -82,7 +87,7 @@
         const tileNumber = String(tileIndex).padStart(2, '0');
 
         // Set video source
-        videoPlayer.src = `assets/videos/${tileNumber}.mp4`;
+        videoPlayer.src = TEST_MODE ? 'assets/videos/test.mp4' : `assets/videos/${tileNumber}.mp4`;
 
         // Set white tile thumbnail
         playerTile.innerHTML = `<img src="assets/tiles-x2/${tileNumber} weiss.png" alt="Tile ${tileNumber}">`;
@@ -215,6 +220,31 @@
     // End scrubbing
     function endScrub() {
         isDragging = false;
+    }
+
+    // Handle cursor visibility on mouse move
+    function handleCursorVisibility() {
+        showCursor();
+        clearCursorTimeout();
+        cursorTimeoutId = setTimeout(hideCursor, CURSOR_HIDE_MS);
+    }
+
+    // Show cursor
+    function showCursor() {
+        document.body.classList.remove('cursor-hidden');
+    }
+
+    // Hide cursor
+    function hideCursor() {
+        document.body.classList.add('cursor-hidden');
+    }
+
+    // Clear cursor timeout
+    function clearCursorTimeout() {
+        if (cursorTimeoutId) {
+            clearTimeout(cursorTimeoutId);
+            cursorTimeoutId = null;
+        }
     }
 
     // Start the application
