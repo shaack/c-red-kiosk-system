@@ -138,8 +138,8 @@ body.cursor-hidden * {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8.03vw;
-    height: 8.03vw;
+    width: 9.10vw;
+    height: 9.10vw;
     background: transparent;
     border: none;
     cursor: pointer;
