@@ -196,9 +196,9 @@ body.cursor-hidden * {
 .time-display {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-120%);
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.84vw;
+    font-size: 1.5vw;
     font-family: 'EB Garamond', serif;
     z-index: 32;
     white-space: nowrap;
