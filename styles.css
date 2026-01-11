@@ -93,7 +93,7 @@ body.cursor-hidden * {
 .player-tile img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
@@ -116,10 +116,10 @@ body.cursor-hidden * {
 /* Close Button */
 .close-button {
     position: absolute;
-    top: 3.06vw;
-    right: 6.06vw;
-    width: 3.83vw;
-    height: 3.83vw;
+    top: 3.5vw;
+    right: 5.7vw;
+    width: 4.63vw;
+    height: 4.63vw;
     background: transparent;
     border: none;
     cursor: pointer;
