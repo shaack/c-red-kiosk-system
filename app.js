@@ -54,6 +54,9 @@
         indexView.classList.remove('active');
         playerView.classList.add('active');
 
+        // Initialize scrubber and time display position
+        initializeScrubber();
+
         // Show controls (paused state)
         controlsOverlay.classList.add('visible');
     }
@@ -120,10 +123,23 @@
         indexView.classList.remove('active');
         playerView.classList.add('active');
 
+        // Initialize scrubber and time display position
+        initializeScrubber();
+
         // Hide controls and play
         controlsOverlay.classList.remove('visible');
         videoPlayer.play();
         clearPauseTimeout();
+    }
+
+    // Initialize scrubber and time display position
+    function initializeScrubber() {
+        scrubHandle.style.left = '0px';
+        timeDisplay.textContent = '00:00:00';
+        // Use requestAnimationFrame to ensure DOM is fully rendered
+        requestAnimationFrame(() => {
+            updateTimeDisplayPosition(0, scrubBar.offsetWidth);
+        });
     }
 
     // Go back to index view
