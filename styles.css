@@ -83,11 +83,11 @@ body.cursor-hidden * {
 /* Player Tile Thumbnail */
 .player-tile {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: calc(100% / 7);
-    height: calc(100% / 3);
-    z-index: 10;
+    bottom: 2.5vw;
+    right: 3.5vw;
+    width: calc(100% / 7 * 0.96);
+    height: calc(100% / 3 * 0.96);
+    z-index: 25;
 }
 
 .player-tile img {
