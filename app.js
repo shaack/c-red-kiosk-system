@@ -64,6 +64,8 @@
 
     // Create the tile grid
     function createTileGrid() {
+        const FADE_DELAY_MS = 30; // Delay between each tile fade-in
+
         for (let i = 0; i < TILES_COUNT; i++) {
             const tileIndex = i + 1;
             const tileNumber = String(tileIndex).padStart(2, '0');
@@ -71,6 +73,7 @@
             const tile = document.createElement('div');
             tile.className = 'tile';
             tile.dataset.index = tileIndex;
+            tile.style.animationDelay = (i * FADE_DELAY_MS) + 'ms';
 
             const img = document.createElement('img');
             img.src = `assets/tiles-x2/${tileNumber}.png`;

@@ -58,6 +58,17 @@ body.cursor-hidden * {
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    opacity: 0;
+    animation: tilesFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes tilesFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .tile img {
@@ -67,9 +78,6 @@ body.cursor-hidden * {
     display: block;
 }
 
-.tile:hover {
-    opacity: 0.9;
-}
 
 /* Player View */
 #player-view {
