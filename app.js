@@ -27,6 +27,7 @@
     let currentTileIndex = null;
     let pauseTimeoutId = null;
     let isDragging = false;
+    let justFinishedScrubbing = false;
     let cursorTimeoutId = null;
 
     // Initialize the application
@@ -156,6 +157,12 @@
 
     // Handle click on player view
     function handlePlayerClick(e) {
+        // Ignore clicks after scrubbing ends
+        if (justFinishedScrubbing) {
+            justFinishedScrubbing = false;
+            return;
+        }
+
         // Ignore clicks on controls
         if (e.target.closest('.close-button') ||
             e.target.closest('.play-button') ||
@@ -280,6 +287,9 @@
 
     // End scrubbing
     function endScrub() {
+        if (isDragging) {
+            justFinishedScrubbing = true;
+        }
         isDragging = false;
     }
 
