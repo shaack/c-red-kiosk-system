@@ -62,13 +62,18 @@ body.cursor-hidden * {
     animation: tilesFadeIn 0.3s ease-out forwards;
 }
 
+.tile.fade-out {
+    animation: tilesFadeOut 0.3s ease-out forwards;
+}
+
 @keyframes tilesFadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes tilesFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 .tile img {
@@ -83,6 +88,16 @@ body.cursor-hidden * {
 #player-view {
     background: #fff;
     padding: var(--padding);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+#player-view.fade-in {
+    opacity: 1;
+}
+
+#player-view.fade-out {
+    opacity: 0;
 }
 
 #video-player {

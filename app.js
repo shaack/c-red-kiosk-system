@@ -9,6 +9,7 @@
     const GRID_ROWS = 3;
     const PAUSE_TIMEOUT_MS = 3 * 60 * 1000; // 3 minutes
     const CURSOR_HIDE_MS = 1 * 1000; // 1 second
+    const FADE_DURATION_MS = 300; // Duration of fade animations
 
     // DOM Elements
     const indexView = document.getElementById('index-view');
@@ -64,8 +65,6 @@
 
     // Create the tile grid
     function createTileGrid() {
-        const FADE_DELAY_MS = 30; // Delay between each tile fade-in
-
         for (let i = 0; i < TILES_COUNT; i++) {
             const tileIndex = i + 1;
             const tileNumber = String(tileIndex).padStart(2, '0');
@@ -73,7 +72,6 @@
             const tile = document.createElement('div');
             tile.className = 'tile';
             tile.dataset.index = tileIndex;
-            tile.style.animationDelay = (i * FADE_DELAY_MS) + 'ms';
 
             const img = document.createElement('img');
             img.src = `assets/tiles-x2/${tileNumber}.png`;
@@ -117,23 +115,34 @@
         currentTileIndex = tileIndex;
         const tileNumber = String(tileIndex).padStart(2, '0');
 
-        // Set video source
-        videoPlayer.src = TEST_MODE ? 'assets/videos/test.mp4' : `assets/videos/${tileNumber}.mp4`;
+        // Fade out all tiles simultaneously
+        const tiles = tileGrid.querySelectorAll('.tile');
+        tiles.forEach(tile => {
+            tile.classList.add('fade-out');
+        });
 
-        // Set white tile thumbnail
-        playerTile.innerHTML = `<img src="assets/tiles-x2/${tileNumber} weiss.png" alt="Tile ${tileNumber}">`;
+        // Wait for tiles to fade out, then switch to player
+        setTimeout(() => {
+            // Set video source
+            videoPlayer.src = TEST_MODE ? 'assets/videos/test.mp4' : `assets/videos/${tileNumber}.mp4`;
 
-        // Switch to player view
-        indexView.classList.remove('active');
-        playerView.classList.add('active');
+            // Set white tile thumbnail
+            playerTile.innerHTML = `<img src="assets/tiles-x2/${tileNumber} weiss.png" alt="Tile ${tileNumber}">`;
 
-        // Initialize scrubber and time display position
-        initializeScrubber();
+            // Switch to player view
+            indexView.classList.remove('active');
+            playerView.classList.add('active');
+            playerView.classList.remove('fade-out');
+            playerView.classList.add('fade-in');
 
-        // Hide controls and play
-        controlsOverlay.classList.remove('visible');
-        videoPlayer.play();
-        clearPauseTimeout();
+            // Initialize scrubber and time display position
+            initializeScrubber();
+
+            // Hide controls and play
+            controlsOverlay.classList.remove('visible');
+            videoPlayer.play();
+            clearPauseTimeout();
+        }, FADE_DURATION_MS);
     }
 
     // Initialize scrubber and time display position
@@ -149,13 +158,30 @@
     // Go back to index view
     function goToIndex() {
         videoPlayer.pause();
-        videoPlayer.src = '';
-        currentTileIndex = null;
         clearPauseTimeout();
-
-        playerView.classList.remove('active');
-        indexView.classList.add('active');
         controlsOverlay.classList.remove('visible');
+
+        // Fade out player
+        playerView.classList.remove('fade-in');
+        playerView.classList.add('fade-out');
+
+        setTimeout(() => {
+            videoPlayer.src = '';
+            currentTileIndex = null;
+
+            // Switch views
+            playerView.classList.remove('active');
+            indexView.classList.add('active');
+
+            // Reset tiles for fade-in animation
+            const tiles = tileGrid.querySelectorAll('.tile');
+            tiles.forEach(tile => {
+                tile.classList.remove('fade-out');
+                tile.style.animation = 'none';
+                tile.offsetHeight; // Trigger reflow
+                tile.style.animation = '';
+            });
+        }, FADE_DURATION_MS);
     }
 
     // Handle click on player view
