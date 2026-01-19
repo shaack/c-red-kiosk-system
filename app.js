@@ -111,6 +111,15 @@
 
         // Suppress context menu (right-click and long-touch)
         document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Prevent pinch zoom (iOS Safari)
+        document.addEventListener('gesturestart', (e) => e.preventDefault());
+        document.addEventListener('gesturechange', (e) => e.preventDefault());
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     }
 
     // Play video for a tile

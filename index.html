@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kiosk</title>
     <link rel="stylesheet" href="assets/fonts/eb-garamond-v32-latin/eb-garamond.css">
     <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,7 @@
 
     <!-- Player View -->
     <div id="player-view" class="view">
-        <video id="video-player" playsinline></video>
+        <video id="video-player" playsinline disablepictureinpicture></video>
 
         <!-- Tile thumbnail in lower right -->
         <div class="player-tile" id="player-tile"></div>
