@@ -108,6 +108,9 @@
         // Cursor visibility
         document.addEventListener('mousemove', handleCursorVisibility);
         hideCursor(); // Hide cursor initially
+
+        // Suppress context menu (right-click and long-touch)
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
     }
 
     // Play video for a tile
